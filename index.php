@@ -41,9 +41,13 @@ if (isset($_POST['code'])) {
     $code_return = htmlspecialchars($code_return, ENT_IGNORE);
 }
 ?>
-<!doctype>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
+        <meta charset="utf-8">
+        <title>Laravel Localization Tool</title>
+        <meta name="description" content="Simple tool to help with localization process on laravel template files.">
+        <meta name="author" content="SitePoint">
         <style>
             body{
                 padding: 20px;
@@ -60,20 +64,20 @@ if (isset($_POST['code'])) {
     <body>
         <h1>Laravel Localization Tool</h1>
         <small>
-            Description: paste your blade code with @lang definitions before actual strings, ex:@lang('project.exit_button')Exit
+            Description: paste your blade code with @lang definitions before actual strings. Examples in <a href="README.md">README.md</a>
         </small>
-<?php
-if (isset($elements)) {
-    echo "<h2>Localization file output</h2>";
-    echo "<textarea>\n";
-    echo "<?php\n\nreturn array(\n";
-    foreach ($elements as $key => $e) {
-        echo "'" . $e . "' => '" . trim($strings[$key]) . "',\n";
-    }
-    echo ");";
-    echo "\n</textarea>";
-}
-?>
+        <?php
+        if (isset($elements)) {
+            echo "<h2>Localization file output</h2>";
+            echo "<textarea>\n";
+            echo "<?php\n\nreturn array(\n";
+            foreach ($elements as $key => $e) {
+                echo "'" . $e . "' => '" . trim($strings[$key]) . "',\n";
+            }
+            echo ");";
+            echo "\n</textarea>";
+        }
+        ?>
         <form method='post'>
             <h2>Blade code input/output</h2>
             <textarea name='code'><?php if (isset($code_return)) echo $code_return; ?></textarea>

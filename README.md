@@ -3,6 +3,8 @@ Laravel Localization Tool
 
 Simple tool to help with localization process on laravel template files.
 
+![Image](screenshot.png)
+
 ##Input
 Laravel Blade template with @lang definitions before correct strings. Examples below.
 
