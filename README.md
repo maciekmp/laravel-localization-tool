@@ -5,6 +5,9 @@ Simple tool to help with localization process on laravel template files.
 
 ![Image](screenshot.png)
 
+##Contribute!
+If you want to handle some extra scenarios in your blade templates please contact with me through issues tab.
+
 ##Input
 Laravel Blade template with @lang definitions before correct strings. Examples below.
 

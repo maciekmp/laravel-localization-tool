@@ -22,21 +22,46 @@ if (isset($_POST['code'])) {
     $code_return = $code;
     $code = explode('@lang(\'', $code);
     array_shift($code);
+    
     $elements = array();
     $strings = array();
+    $keys = array();
+    
     foreach ($code as $c) {
-        $ce = explode('\')', $c);
-        $c = $ce[0];
-        $after = $ce[1];
+        //get string in @lang methos
+        $ce = explode(')', $c);
+        $c = array_shift($ce);
+        $c = str_replace('\'', '', $c);
+
+        //join rest of the string
+        $after = implode(')', $ce);
+        
+        //get string after first dot sign
         $c = explode('.', $c);
         array_shift($c);
         $c = implode('.', $c);
-        array_push($elements, $c);
 
-        $after = cutTo($after, '<');
+        //remove rest of the origin string
+        $after = cutTo($after, '"');
         $after = cutTo($after, "\n");
-        array_push($strings, $after);
+        $after = cutTo($after, "{{");
+        $after = cutTo($after, '<');
+        
+        //replace string in blade template
         $code_return = str_replace($after, '', $code_return);
+        
+        //if string already exist ignore it
+        //todo: overwrite it
+        if (in_array($c, $elements)){
+            continue;
+        }
+        //if key exist in exlclude_keys do not add it
+        $exclude = explode(',', $_POST['exclude_keys']);
+        if (in_array($c, $exclude))
+            continue;
+        //add key to $elements and origin string to $strings
+        array_push($elements, $c);
+        array_push($strings, $after);
     }
     $code_return = htmlspecialchars($code_return, ENT_IGNORE);
 }
@@ -64,7 +89,8 @@ if (isset($_POST['code'])) {
     <body>
         <h1>Laravel Localization Tool</h1>
         <small>
-            Description: paste your blade code with @lang definitions before actual strings. Examples in <a href="README.md">README.md</a>
+            Description: paste your blade code with @lang definitions before actual strings. Examples in <a href="README.md">README.md</a><br/>
+            Original strings are cut to: new line mark, opening html tag, blade variable mark '{{' and quote sign.
         </small>
         <?php
         if (isset($elements)) {
@@ -81,6 +107,8 @@ if (isset($_POST['code'])) {
         <form method='post'>
             <h2>Blade code input/output</h2>
             <textarea name='code'><?php if (isset($code_return)) echo $code_return; ?></textarea>
+            Exclude keys:
+            <input name='exclude_keys' value='close_button,save_button, exit_button'/>
             <input type='submit'>
         </form>
     </body>
