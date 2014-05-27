@@ -4,7 +4,7 @@ Laravel Localization Tool
 Simple tool to help with localization process on laravel template files.
 
 ##Input
-Laravel Blade template with @lang definitions before correct strings. Ex: x:@lang('project.exit_button')Exit
+Laravel Blade template with @lang definitions before correct strings. Examples below.
 
 ```
 <p class="status">
