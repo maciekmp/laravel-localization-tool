@@ -5,6 +5,9 @@ Simple tool to help with localization process on laravel template files.
 
 ![Image](screenshot.png)
 
+##Example
+You can check demo [here](http://maciejplusa.com/laravel-localization-tool/)
+
 ##Instructions
 1. Open blade template in your favorite code editor.
 1. Add @lang('filename.key') before every string you can get in localization array.
