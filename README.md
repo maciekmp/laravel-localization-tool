@@ -5,6 +5,14 @@ Simple tool to help with localization process on laravel template files.
 
 ![Image](screenshot.png)
 
+##Instructions
+1. Open blade template in your favorite code editor.
+1. Add @lang('filename.key') before every string you can get in localization array.
+1. Copy blade template into localization tool and send it.
+1. After that you get code for localization file and parsed blade template without original strings.
+1. Copy those to your project files.
+1. Repeat process with your next blade template.
+
 ##Contribute!
 If you want to handle some extra scenarios in your blade templates please contact with me through issues tab.
 
