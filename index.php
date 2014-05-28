@@ -111,5 +111,8 @@ if (isset($_POST['code'])) {
             <input name='exclude_keys' value='close_button,save_button, exit_button'/>
             <input type='submit'>
         </form>
+        <footer>
+        <a href="https://github.com/maciekmp/laravel-localization-tool/">GitHub</a>
+        </footer>
     </body>
 </html>
