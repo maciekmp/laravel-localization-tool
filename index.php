@@ -85,6 +85,10 @@ if (isset($_POST['code'])) {
                 margin-bottom: 20px;
             }
         </style>
+        <?php
+        if(is_file('analytics.php'))
+            include 'analytics.php';
+        ?>
     </head>
     <body>
         <h1>Laravel Localization Tool</h1>
