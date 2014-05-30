@@ -3,6 +3,7 @@ Laravel Localization Tool
 
 Simple tool to help with localization process on laravel template files.
 
+##Screenshot
 ![Image](screenshot.png)
 
 ##Example
